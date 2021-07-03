@@ -11,6 +11,8 @@ Sps sps(SPS_MIN, SPS_MAX, SPS_RAW_MIN, SPS_RAW_MAX, SPS_PIN);
 DcMotorController dcMotorController(&sps);
 SerialLogger serialLogger;
 Shifter shifter(&sps, &dcMotorController);
+Button upshiftPaddle = Button(UP_SHIFT_PIN, true, DEBOUNCE_MS);
+Button downShiftPaddle = Button(DOWN_SHIFT_PIN, true, DEBOUNCE_MS);
 
 void setup()
 {
@@ -22,12 +24,14 @@ void setup()
 
 void loop()
 {
+  upshiftPaddle.read();
+  downShiftPaddle.read();
   M5.update();
-  if (M5.BtnA.wasPressed())
+  if (UP_SHIFT_BUTTON.wasPressed() || upshiftPaddle.wasPressed())
   {
     shifter.upShift();
   }
-  if (UP_SHIFT_BUTTON.wasPressed())
+  if (DOWN_SHIFT_BUTTON.wasPressed() || downShiftPaddle.wasPressed())
   {
     shifter.downShift();
   }

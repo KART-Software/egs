@@ -1,10 +1,16 @@
-#include <M5Stack.h>
+#ifndef _DC_MOTOR_H_
+#define _DC_MOTOR_H_
 
-class DcMotor
+#include <M5Stack.h>
+#include <CytronMotorDriver.h>
+
+class DcMotor : public CytronMD
 {
 public:
-    DcMotor(uint8_t pin1, uint8_t pin2);
+    DcMotor(MODE mode, uint8_t pin1, uint8_t pin2);
     void rotate(float angle);
 
 private:
 };
+
+#endif

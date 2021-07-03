@@ -1,3 +1,6 @@
+#ifndef _DC_MOTOR_CONTROLLER_H_
+#define _DC_MOTOR_CONTROLLER_H_
+
 #include "dc_motor.hpp"
 #include "sensors.hpp"
 
@@ -15,3 +18,5 @@ private:
     void setOutputLimit();
     int validateOutput();
 };
+
+#endif
