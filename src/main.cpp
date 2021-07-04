@@ -7,11 +7,9 @@
 
 TaskHandle_t canSendTask;
 
-Sps sps(SPS_MIN, SPS_MAX, SPS_RAW_MIN, SPS_RAW_MAX, SPS_PIN);
-DcMotorController dcMotorController(&sps);
 SerialLogger serialLogger;
-Shifter shifter(&sps, &dcMotorController);
-Button upshiftPaddle = Button(UP_SHIFT_PIN, true, DEBOUNCE_MS);
+Shifter shifter = Shifter();
+Button upShiftPaddle = Button(UP_SHIFT_PIN, true, DEBOUNCE_MS);
 Button downShiftPaddle = Button(DOWN_SHIFT_PIN, true, DEBOUNCE_MS);
 
 void setup()
@@ -24,15 +22,15 @@ void setup()
 
 void loop()
 {
-  upshiftPaddle.read();
+  upShiftPaddle.read();
   downShiftPaddle.read();
   M5.update();
-  if (UP_SHIFT_BUTTON.wasPressed() || upshiftPaddle.wasPressed())
+  if (UP_SHIFT_BUTTON.wasPressed() || upShiftPaddle.wasPressed())
   {
-    shifter.upShift();
+    shifter.upShift(SHIFT_TIMEOUT);
   }
   if (DOWN_SHIFT_BUTTON.wasPressed() || downShiftPaddle.wasPressed())
   {
-    shifter.downShift();
+    shifter.downShift(SHIFT_TIMEOUT);
   }
 }
