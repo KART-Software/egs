@@ -9,7 +9,6 @@
 class SerialLogger
 {
 public:
-    SerialLogger();
     void initialize();
     void log(unsigned int cycleTime, double spsValue, GearPosition gearPosition);
 };

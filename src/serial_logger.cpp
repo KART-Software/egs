@@ -1,7 +1,5 @@
 #include "serial_logger.hpp"
 
-SerialLogger::SerialLogger() {}
-
 void SerialLogger::initialize()
 {
     Serial.begin(SERIAL_SPEED);
