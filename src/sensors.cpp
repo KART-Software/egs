@@ -14,8 +14,8 @@ void Sensor::setRange(double minValue, double maxValue)
 
 void Sensor::setConversion(uint16_t rawMinValue, uint16_t rawMaxValue)
 {
-    this->slope = (maxValue - minValue) / (int(rawMaxValue) - int(rawMinValue));
-    this->intercept = (rawMaxValue * minValue - rawMinValue * maxValue) / (int(rawMaxValue) - int(rawMinValue));
+    this->slope = (maxValue - minValue) / (int32_t(rawMaxValue) - int32_t(rawMinValue));
+    this->intercept = (rawMaxValue * minValue - rawMinValue * maxValue) / (int32_t(rawMaxValue) - int32_t(rawMinValue));
 }
 
 double Sensor::convertedValue()
