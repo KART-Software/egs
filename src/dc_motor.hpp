@@ -9,6 +9,7 @@ public:
   DcMotor(uint8_t pwmPin, uint8_t dirPin);
   void setPwm(uint8_t pwmChannel, double pwmFreqency, uint8_t pwmResolutionBits);
   void setSpeed(int32_t speed);
+  uint16_t getPwmMaxOutput();
 
 protected:
   uint8_t _pwmChannel;

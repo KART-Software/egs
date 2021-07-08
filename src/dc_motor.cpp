@@ -45,3 +45,7 @@ void DcMotor::setSpeed(int32_t speed)
         digitalWrite(_dirPin, HIGH);
     }
 }
+uint16_t DcMotor::getPwmMaxOutput()
+{
+    return _pwmMaxOutput;
+}
