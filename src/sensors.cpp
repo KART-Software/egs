@@ -14,8 +14,8 @@ void Sensor::setRange(double minValue, double maxValue)
 
 void Sensor::setConversion(uint16_t rawMinValue, uint16_t rawMaxValue)
 {
-    this->slope = (maxValue - minValue) / (rawMaxValue - rawMinValue);
-    this->intercept = (rawMaxValue * minValue - rawMinValue * maxValue) / (rawMaxValue - rawMinValue);
+    this->slope = (maxValue - minValue) / (int(rawMaxValue) - int(rawMinValue));
+    this->intercept = (rawMaxValue * minValue - rawMinValue * maxValue) / (int(rawMaxValue) - int(rawMinValue));
 }
 
 double Sensor::convertedValue()
@@ -45,9 +45,9 @@ Sps::
 {
 }
 
-double Sps::read()
+uint16_t Sps::read()
 {
     // rawValue = analogRead(pin);
     rawValue = gAdc.value[pin];
-    return validatedConvertedValue();
+    return rawValue;
 }

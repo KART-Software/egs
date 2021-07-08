@@ -17,7 +17,7 @@ class Sensor
 public:
     Sensor();
     Sensor(double minValue, double maxValue, uint16_t rawMinValue, uint16_t rawMaxValue);
-    virtual double read() = 0;
+    virtual uint16_t read() = 0;
     void setRange(double minValue, double maxValue);
     void setConversion(uint16_t rawMinValue, uint16_t rawMaxValue);
     double convertedValue();
@@ -34,7 +34,7 @@ class Sps : public Sensor
 {
 public:
     Sps(double minValue, double maxValue, uint16_t rawMinValue, uint16_t rawMaxValue, uint8_t pin);
-    double read();
+    uint16_t read();
 
 protected:
     uint8_t pin;
