@@ -24,14 +24,7 @@ void DcMotor::setPwm(uint8_t pwmChannel, double pwmFreqency, uint8_t pwmResoluti
 void DcMotor::setSpeed(int32_t speed)
 {
     // Make sure the speed is within the limit.
-    if (speed > _pwmMaxOutput)
-    {
-        speed = _pwmMaxOutput;
-    }
-    else if (speed < -_pwmMaxOutput)
-    {
-        speed = -_pwmMaxOutput;
-    }
+    speed = constrain(speed, -int32_t(_pwmMaxOutput), int32_t(_pwmMaxOutput));
 
     // Set the speed and direction.
     if (speed >= 0)
