@@ -2,15 +2,21 @@
 #define _DC_MOTOR_H_
 
 #include <M5Stack.h>
-#include <CytronMotorDriver.h>
 
-class DcMotor : public CytronMD
+class DcMotor
 {
 public:
-    DcMotor(MODE mode, uint8_t pin1, uint8_t pin2);
-    void rotate(float angle);
+  DcMotor(uint8_t pwmPin, uint8_t dirPin);
+  void setPwm(uint8_t pwmChannel, double pwmFreqency, uint8_t pwmResolutionBits);
+  void setSpeed(int32_t speed);
 
-private:
+protected:
+  uint8_t _pwmChannel;
+  uint8_t _pwmPin;
+  uint8_t _dirPin;
+  double _pwmFrequency;
+  uint8_t _pwmResolutionBits;
+  uint16_t _pwmMaxOutput;
 };
 
 #endif
