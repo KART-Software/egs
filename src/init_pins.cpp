@@ -2,6 +2,6 @@
 
 void initPins()
 {
-    pinMode(DC_MOTER_OUTPUT_PIN_1, OUTPUT);
-    pinMode(DC_MOTOR_OUTPUT_PIN_2, OUTPUT);
+    pinMode(DC_MOTOR_DIR_PIN, OUTPUT);
+    pinMode(DC_MOTOR_PWM_PIN, OUTPUT);
 }
