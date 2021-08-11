@@ -9,7 +9,7 @@
 #define SPS_RAW_MAX 1023
 #define SPS_RAW_MIN 0
 
-#define SPS_MAX 100
+#define SPS_MAX 360
 #define SPS_MIN 0
 
 class Sensor
