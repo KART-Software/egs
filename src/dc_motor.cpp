@@ -1,7 +1,7 @@
 #include "dc_motor.hpp"
 
-DcMotor::DcMotor(uint8_t pwmPin, uint8_t dirPin)
-    : _pwmPin(pwmPin), _dirPin(dirPin)
+DcMotor::DcMotor(uint8_t pwmPin, uint8_t dirPin, uint8_t powerPin)
+    : _pwmPin(pwmPin), _dirPin(dirPin), _powerPin(powerPin)
 {
 
     pinMode(_pwmPin, OUTPUT);
@@ -9,6 +9,7 @@ DcMotor::DcMotor(uint8_t pwmPin, uint8_t dirPin)
 
     digitalWrite(_pwmPin, LOW);
     digitalWrite(_dirPin, LOW);
+    disable();
 }
 
 void DcMotor::setPwm(uint8_t pwmChannel, double pwmFreqency, uint8_t pwmResolutionBits)
@@ -41,4 +42,14 @@ void DcMotor::setSpeed(int32_t speed)
 uint16_t DcMotor::getPwmMaxOutput()
 {
     return _pwmMaxOutput;
+}
+
+void DcMotor::enable()
+{
+    digitalWrite(_powerPin, HIGH);
+}
+
+void DcMotor::disable()
+{
+    digitalWrite(_powerPin, LOW);
 }

@@ -15,6 +15,8 @@
 #define UP_SHIFT_BUTTON M5.BtnA
 #define DOWN_SHIFT_BUTTON M5.BtnB
 
+#define DC_MOTOR_POWER_PIN 19
+
 #define DC_MOTOR_DIR_PIN 25
 #define DC_MOTOR_PWM_PIN 26
 
