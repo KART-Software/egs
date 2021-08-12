@@ -18,11 +18,10 @@ ShiftStatus Shifter::getShiftStatus()
 
 bool Shifter::upShift(unsigned long timeout)
 {
-    GearPosition originalGearPosition = gearPosition;
     GearPosition targetGearPosition = higherGear();
     if (gearPosition != targetGearPosition)
     {
-        dcMotorController.control(shiftPosition(targetGearPosition));
+        dcMotorController.goTo(shiftPosition(targetGearPosition));
     }
     // TODO タイムアウト処理
     // statusの更新
@@ -34,7 +33,7 @@ bool Shifter::downShift(unsigned long timeout)
     GearPosition targetGearPosition = lowerGear();
     if (gearPosition != targetGearPosition)
     {
-        dcMotorController.control(shiftPosition(targetGearPosition));
+        dcMotorController.goTo(shiftPosition(targetGearPosition));
     }
 }
 
