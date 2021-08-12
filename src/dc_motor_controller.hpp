@@ -3,7 +3,8 @@
 
 #include "dc_motor.hpp"
 #include "sensors.hpp"
-#include <PID_v1.h>
+#include "init_pins.hpp"
+#include "pid.hpp"
 
 #define PWM_CHANNEL 0
 #define PWM_FREQUENCY 9600
@@ -13,11 +14,14 @@
 #define PID_KI 0.0
 #define PID_KD 0.0
 
+#define DC_MOTOR_CYCLE_TIME 30
+
 class DcMotorController
 {
 public:
     DcMotorController(Sps *sps);
-    void control(uint16_t setpoint);
+    void control(double setpoint);
+    void goTo(double setpoint);
     void setDcMotorOn();
     void setDcMotorOff();
 
@@ -27,7 +31,6 @@ private:
     PID pid;
     double sp, speed, setpoint;
     void setOutputLimit();
-    int validateOutput();
 };
 
 #endif
