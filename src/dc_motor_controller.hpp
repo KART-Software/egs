@@ -16,6 +16,9 @@
 
 #define DC_MOTOR_CYCLE_TIME 30
 
+#define SAME_POSITION_THRESHOLD 5 * PI / 180
+#define SAME_POSITION_THRESHOLD_TIME 100
+
 class DcMotorController
 {
 public:
@@ -29,8 +32,25 @@ private:
     DcMotor dcMotor;
     Sps *sps;
     PID pid;
+    ArrivalChecker arrivalChecker;
     double sp, speed, setpoint;
     void setOutputLimit();
+};
+
+class ArrivalChecker
+{
+public:
+    ArrivalChecker(Sps *sps);
+    void setSetpoint(double setpoint);
+    void update();
+    bool hasArrived();
+
+private:
+    Sps *sps;
+    double setpoint;
+    bool isOnTargetPosition;
+    uint32_t ms;
+    uint32_t lastDifferentPositionTime;
 };
 
 #endif
