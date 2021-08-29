@@ -24,7 +24,8 @@ void loop()
 {
   upShiftPaddle.read();
   downShiftPaddle.read();
-  M5.update();
+  UP_SHIFT_BUTTON.read();
+  DOWN_SHIFT_BUTTON.read();
   if (UP_SHIFT_BUTTON.wasPressed() || upShiftPaddle.wasPressed())
   {
     shifter.upShift(SHIFT_TIMEOUT);
