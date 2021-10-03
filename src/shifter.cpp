@@ -22,6 +22,7 @@ bool Shifter::upShift(unsigned long timeout)
     if (gearPosition != targetGearPosition)
     {
         dcMotorController.goTo(shiftPosition(targetGearPosition));
+        gearPosition = targetGearPosition;
     }
     // TODO タイムアウト処理
     // statusの更新
@@ -34,6 +35,7 @@ bool Shifter::downShift(unsigned long timeout)
     if (gearPosition != targetGearPosition)
     {
         dcMotorController.goTo(shiftPosition(targetGearPosition));
+        gearPosition = targetGearPosition;
     }
 }
 
