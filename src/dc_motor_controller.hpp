@@ -19,6 +19,22 @@
 #define SAME_POSITION_THRESHOLD 5 * PI / 180
 #define SAME_POSITION_THRESHOLD_TIME 100
 
+class ArrivalChecker
+{
+public:
+    ArrivalChecker(Sps *sps);
+    void setSetpoint(double setpoint);
+    void update();
+    bool hasArrived();
+
+private:
+    Sps *sps;
+    double setpoint;
+    bool isOnTargetPosition;
+    uint32_t ms;
+    uint32_t lastDifferentPositionTime;
+};
+
 class DcMotorController
 {
 public:
@@ -35,22 +51,6 @@ private:
     ArrivalChecker arrivalChecker;
     double sp, speed, setpoint;
     void setOutputLimit();
-};
-
-class ArrivalChecker
-{
-public:
-    ArrivalChecker(Sps *sps);
-    void setSetpoint(double setpoint);
-    void update();
-    bool hasArrived();
-
-private:
-    Sps *sps;
-    double setpoint;
-    bool isOnTargetPosition;
-    uint32_t ms;
-    uint32_t lastDifferentPositionTime;
 };
 
 #endif
