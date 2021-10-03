@@ -28,6 +28,11 @@ double Sensor::validatedConvertedValue()
     return constrain(convertedValue(), minValue, maxValue);
 }
 
+GearPosition Sensor::getGearPosition()
+{
+    convertedValue();
+}
+
 bool Sensor::isInRange()
 {
     double value = convertedValue();

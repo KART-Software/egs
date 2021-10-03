@@ -5,6 +5,7 @@
 
 #include "init_pins.hpp"
 #include "globals.hpp"
+#include "statuses.hpp"
 
 #define SPS_RAW_MAX 1023
 #define SPS_RAW_MIN 0
@@ -24,6 +25,7 @@ public:
     void setConversion(int16_t rawMinValue, int16_t rawMaxValue);
     double convertedValue();
     double validatedConvertedValue();
+    GearPosition getGearPosition();
     bool isInRange();
     double getMaxValue();
     double getMinValue();
