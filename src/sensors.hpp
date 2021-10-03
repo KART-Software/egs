@@ -18,25 +18,28 @@ class Sensor
 {
 public:
     Sensor();
-    Sensor(double minValue, double maxValue, uint16_t rawMinValue, uint16_t rawMaxValue);
-    virtual uint16_t read() = 0;
+    Sensor(double minValue, double maxValue, double margin, int16_t rawMinValue, int16_t rawMaxValue);
+    virtual double read() = 0;
     void setRange(double minValue, double maxValue);
-    void setConversion(uint16_t rawMinValue, uint16_t rawMaxValue);
+    void setConversion(int16_t rawMinValue, int16_t rawMaxValue);
     double convertedValue();
     double validatedConvertedValue();
     bool isInRange();
+    double getMaxValue();
+    double getMinValue();
 
 protected:
-    uint16_t rawValue;
+    int16_t rawValue;
     double maxValue, minValue;
+    double margin;
     double intercept, slope;
 };
 
 class Sps : public Sensor
 {
 public:
-    Sps(double minValue, double maxValue, uint16_t rawMinValue, uint16_t rawMaxValue, uint8_t pin);
-    uint16_t read();
+    Sps(double minValue, double maxValue, int16_t rawMinValue, int16_t rawMaxValue, uint8_t pin);
+    double read();
 
 protected:
     uint8_t pin;
