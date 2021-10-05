@@ -67,21 +67,5 @@ GearPosition Shifter::lowerGear()
 
 double Shifter::shiftPosition(GearPosition gearPosition)
 {
-    switch (gearPosition)
-    {
-    case GearPosition::Neutral:
-        return SHIFT_POSITION_NEUTRAL;
-
-    case GearPosition::First:
-        return SHIFT_POSITION_FIRST;
-
-    case GearPosition::Second:
-        return SHIFT_POSITION_SECOND;
-
-    case GearPosition::Third:
-        return SHIFT_POSITION_THIRD;
-
-    case GearPosition::Top:
-        return SHIFT_POSITION_TOP;
-    }
+    return shiftPositions[(int)gearPosition];
 }

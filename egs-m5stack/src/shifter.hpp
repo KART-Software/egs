@@ -7,12 +7,6 @@
 
 #define SHIFT_TIMEOUT 1000
 
-#define SHIFT_POSITION_NEUTRAL 0 * PI / 180
-#define SHIFT_POSITION_FIRST 72 * PI / 180
-#define SHIFT_POSITION_SECOND 144 * PI / 180
-#define SHIFT_POSITION_THIRD 216 * PI / 180
-#define SHIFT_POSITION_TOP 288 * PI / 180
-
 class Shifter
 {
 public:

@@ -30,7 +30,19 @@ double Sensor::validatedConvertedValue()
 
 GearPosition Sensor::getGearPosition()
 {
-    convertedValue();
+    double shiftPosition = convertedValue();
+    double errorMin = abs(SHIFT_POSITION_TOP - SHIFT_POSITION_NEUTRAL);
+    int positionNumber;
+    for (int i = 0; i < NUM_OF_SHIFT; i++)
+    {
+        double error = abs(shiftPosition - shiftPositions[i]);
+        if (error < errorMin)
+        {
+            errorMin = error;
+            positionNumber = i;
+        }
+    }
+    return (GearPosition)positionNumber;
 }
 
 bool Sensor::isInRange()
